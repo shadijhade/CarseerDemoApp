@@ -30,6 +30,8 @@ builder.Services.Configure<JsonOptions>(options =>
 var app = builder.Build();
 
 app.UseCors("AllowAll");
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 // Exception handling middleware with exact JSON options
 app.Use(async (context, next) =>
@@ -82,5 +84,7 @@ app.MapGet("/api/vehicles/makes/{makeId}/years/{year}/models", async (int makeId
     var content = await response.Content.ReadAsStringAsync();
     return Results.Content(content, "application/json");
 });
+
+app.MapFallbackToFile("index.html");
 
 app.Run();

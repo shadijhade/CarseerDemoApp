@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, ReactNode } from "react";
-import type { VehicleMake, VehicleType, VehicleModel } from "@/lib/api";
+import { createContext, useContext, useState } from "react";
+import type { ReactNode } from "react";
+import type { VehicleMake, VehicleType } from "@/lib/api";
 
 interface DashboardState {
     selectedMake: VehicleMake | null;

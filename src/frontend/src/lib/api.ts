@@ -22,7 +22,7 @@ interface ApiResponse<T> {
     results: T;
 }
 
-const API_BASE = "http://localhost:5055/api/vehicles";
+const API_BASE = import.meta.env.DEV ? "http://localhost:5055/api/vehicles" : "/api/vehicles";
 
 export async function getMakes(): Promise<VehicleMake[]> {
     const response = await fetch(`${API_BASE}/makes`);
