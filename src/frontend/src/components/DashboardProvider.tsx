@@ -6,9 +6,12 @@ interface DashboardState {
     selectedMake: VehicleMake | null;
     selectedYear: number | null;
     selectedType: VehicleType | null;
+    totalMakes: number;
     setMake: (make: VehicleMake | null) => void;
     setYear: (year: number | null) => void;
     setType: (type: VehicleType | null) => void;
+    setTotalMakes: (count: number) => void;
+    currentStep: number;
 }
 
 const DashboardContext = createContext<DashboardState | undefined>(undefined);
@@ -17,6 +20,7 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     const [selectedMake, setSelectedMake] = useState<VehicleMake | null>(null);
     const [selectedYear, setSelectedYear] = useState<number | null>(null);
     const [selectedType, setSelectedType] = useState<VehicleType | null>(null);
+    const [totalMakes, setTotalMakes] = useState(0);
 
     const setMake = (make: VehicleMake | null) => {
         // Reset sub-selections when make changes
@@ -35,10 +39,17 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
         setSelectedType(type);
     };
 
+    // Derive step from selections
+    const currentStep = selectedMake
+        ? selectedYear && selectedType
+            ? 3
+            : 2
+        : 1;
+
     return (
         <DashboardContext.Provider value={{
-            selectedMake, selectedYear, selectedType,
-            setMake, setYear, setType
+            selectedMake, selectedYear, selectedType, totalMakes,
+            setMake, setYear, setType, setTotalMakes, currentStep
         }}>
             {children}
         </DashboardContext.Provider>
