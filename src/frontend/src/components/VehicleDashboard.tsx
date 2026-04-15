@@ -25,6 +25,16 @@ function DashboardContent() {
                 <div className="max-w-4xl mx-auto px-4 md:px-6 flex items-center justify-between text-[11px] text-muted-foreground">
                     <span className="font-semibold text-foreground">Carseer</span>
                     <span>
+                        Created by{" "}
+                        <a
+                            href="https://github.com/shadijhade"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline underline-offset-2 hover:text-foreground transition-colors font-semibold"
+                        >
+                            Shadi Sadi
+                        </a>
+                        <span className="mx-2 text-border">|</span>
                         Data from{" "}
                         <a
                             href="https://vpic.nhtsa.dot.gov/api/"
