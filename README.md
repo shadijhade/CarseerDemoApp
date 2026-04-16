@@ -41,7 +41,7 @@ cd src/frontend
 npm run build
 
 # copy the build output to the backend's static files folder
-# (replace wwwroot if it already exists)
+# (replace wwwroot if it already exist)
 cp -r dist ../backend/wwwroot
 
 cd ../backend
